@@ -1,6 +1,13 @@
 # Sistema de Gestión para Restaurantes
 
-Plataforma SaaS multi-tenant para la gestión operativa y financiera de restaurantes. Cubre el ciclo completo: **pedidos → ventas → gastos → caja → cierre contable diario**.
+Fullstack restaurant management system built with **Laravel (REST API)** and **React (SPA)**.
+
+The platform manages the full operational cycle of a restaurant:
+orders → sales → expenses → cash register → financial reporting.
+
+Designed with a decoupled architecture so the backend API can also power future mobile applications.
+
+Plataforma SaaS multi-tenant para la gestión operativa y financiera de restaurantes.
 
 ---
 
@@ -296,7 +303,3 @@ php artisan test --filter=OrderTest::test_mozo_cannot_update_other_users_order
 La documentación exhaustiva del proyecto se encuentra en la carpeta `/docs/`:
 
 ---
-
-## Licencia
-
-MIT License — ver [LICENSE](LICENSE) para más detalles.
