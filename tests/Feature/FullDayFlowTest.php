@@ -47,7 +47,7 @@ class FullDayFlowTest extends TestCase
 
         // Restaurant
         $this->restaurant = Restaurant::create([
-            'name' => 'La Conquista Test',
+            'name' => 'TU RESTAURANTE Test',
             'ruc'  => '20123456789',
         ]);
         $this->restaurantId = $this->restaurant->id;

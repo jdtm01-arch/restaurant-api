@@ -21,3 +21,5 @@ AppHttpMiddlewareSetRestaurantContext::*
 public/assets/
 public/index.html
 public/vite.svg
+# local helper seeders
+database/seeders/DatabaseSeeder-just-for-local-test.php

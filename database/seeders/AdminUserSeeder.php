@@ -11,7 +11,7 @@ class AdminUserSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->updateOrInsert(
-            ['email' => 'super-admin@laconquista.com'],
+            ['email' => 'super-admin@TURESTAURANTE.com'],
             [
                 'name' => 'Administrador General',
                 'email_verified_at' => now(),
