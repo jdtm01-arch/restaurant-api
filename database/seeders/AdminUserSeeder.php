@@ -11,11 +11,11 @@ class AdminUserSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->updateOrInsert(
-            ['email' => 'super-admin@TURESTAURANTE.com'],
+            ['email' => 'super-admin@turestaurante.com'],
             [
                 'name' => 'Administrador General',
                 'email_verified_at' => now(),
-                'password' => Hash::make('AdminRest@2026'),
+                'password' => Hash::make('admin1234'),
                 'remember_token' => null,
                 'created_at' => now(),
                 'updated_at' => now(),

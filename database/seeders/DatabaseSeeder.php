@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
         /* ================================================================
          * 2. RESTAURANTE
          * ================================================================ */
-        $restaurantName = env('RESTAURANT_NAME', 'TU RESTAURANTE');
+        $restaurantName = env('RESTAURANT_NAME', 'Tu Restaurante');
         $restaurant = Restaurant::create([
             'name'   => $restaurantName,
             'ruc'    => env('RESTAURANT_RUC', '-'),
@@ -64,8 +64,8 @@ class DatabaseSeeder extends Seeder
         // Super-admin (admin_general)
         $superAdmin = User::create([
             'name'     => 'Super Administrador',
-            'email'    => 'super-admin@TURESTAURANTE.com',
-            'password' => Hash::make('AdminRest@2026'),
+            'email'    => 'super-admin@turestaurante.com',
+            'password' => Hash::make('admin1234'),
         ]);
         RestaurantUser::create([
             'restaurant_id' => $restaurant->id,
@@ -76,7 +76,7 @@ class DatabaseSeeder extends Seeder
         // Admin de restaurante
         $adminUser = User::create([
             'name'     => 'Administrador',
-            'email'    => 'admin@TURESTAURANTE.com',
+            'email'    => 'admin@turestaurante.com',
             'password' => Hash::make('12345678'),
         ]);
         RestaurantUser::create([
@@ -88,7 +88,7 @@ class DatabaseSeeder extends Seeder
         // Mozo de prueba
         $mozo = User::create([
             'name'     => 'Mozo Principal',
-            'email'    => 'mozo@TURESTAURANTE.com',
+            'email'    => 'mozo@turestaurante.com',
             'password' => Hash::make('12345678'),
         ]);
         RestaurantUser::create([
@@ -172,8 +172,8 @@ class DatabaseSeeder extends Seeder
         $bankAccount = $accounts['Banco'];       
 
         $this->command->info("✔  Seeder completado para restaurante: {$restaurant->name}");
-        $this->command->info("   super-admin@TURESTAURANTE.com  /  AdminRest\@2026");
-        $this->command->info("   admin@TURESTAURANTE.com        /  12345678");
-        $this->command->info("   super-mozo@TURESTAURANTE.com   /  12345678");
+        $this->command->info("   super-admin@turestaurante.com  /  admin1234");
+        $this->command->info("   admin@turestaurante.com        /  12345678");
+        $this->command->info("   super-mozo@turestaurante.com   /  12345678");
     }
 }
