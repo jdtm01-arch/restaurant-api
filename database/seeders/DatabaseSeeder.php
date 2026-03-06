@@ -163,6 +163,31 @@ class DatabaseSeeder extends Seeder
         /* ================================================================
          * 9. CUENTAS FINANCIERAS
          * ================================================================ */
+        if ($this->command && !app()->runningUnitTests()) {
+            $this->command->newLine();
+            $this->command->warn('╔══════════════════════════════════════════════════════════════╗');
+            $this->command->warn('║          INICIALIZACIÓN DE CUENTAS FINANCIERAS               ║');
+            $this->command->warn('╠══════════════════════════════════════════════════════════════╣');
+            $this->command->warn('║  Se crearán las cuentas financieras del restaurante.         ║');
+            $this->command->warn('║                                                              ║');
+            $this->command->warn('║  IMPORTANTE:                                                 ║');
+            $this->command->warn('║  Tras el primer login, deberás ir a Finanzas →               ║');
+            $this->command->warn('║  Inicialización y asignar el saldo inicial de cada cuenta.   ║');
+            $this->command->warn('║                                                              ║');
+            $this->command->warn('║  ► Esa inicialización es ÚNICA e IRREVERSIBLE.               ║');
+            $this->command->warn('║  ► A partir de esos saldos se realizarán TODOS los           ║');
+            $this->command->warn('║    cálculos contables del sistema.                           ║');
+            $this->command->warn('║  ► La primera apertura de caja deberá coincidir              ║');
+            $this->command->warn('║    exactamente con el saldo inicial de efectivo.             ║');
+            $this->command->warn('╚══════════════════════════════════════════════════════════════╝');
+            $this->command->newLine();
+
+            if (!$this->command->confirm('¿Confirmas la creación de las cuentas financieras?', true)) {
+                $this->command->info('Creación de cuentas financieras omitida. Ejecuta el seeder nuevamente cuando estés listo.');
+                return;
+            }
+        }
+
         $this->call(FinancialAccountSeeder::class);
 
         $accounts    = FinancialAccount::where('restaurant_id', $restaurant->id)->get()->keyBy('name');
