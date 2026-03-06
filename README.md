@@ -190,8 +190,8 @@ Tras ejecutar `php artisan migrate --seed`, se crea un usuario administrador:
 
 | Campo | Valor |
 |-------|-------|
-| Email | `admin@turestaurante.com` |
-| Password | `password` |
+| Email | `super-admin@turestaurante.com` |
+| Password | `admin1234` |
 | Rol | `admin_general` |
 
 > ⚠️ **Importante**: Cambiar la contraseña en producción.
