@@ -9,6 +9,8 @@
 /bootstrap/cache/*
 .env
 .env.*
+!.env.example
+!.env.testing
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
