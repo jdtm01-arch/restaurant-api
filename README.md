@@ -284,7 +284,7 @@ php artisan test --filter=OrderTest::test_mozo_cannot_update_other_users_order
 | Rol | Operaciones | Finanzas | Administración | Auditoría | Reportes |
 |-----|------------|----------|----------------|----------|----------|
 | **Admin General** | ✅ Todo | ✅ Todo | ✅ Todo | ✅ Todo | ✅ Todo |
-| **Admin Restaurante** | ✅ Todo | ✅ Todo | ✅ Su restaurante | ❌ | ✅ Todo |
+| **Admin Restaurante** | ✅ Todo | ✅ Todo | ✅ Todo | ❌ | ✅ Todo |
 | **Cajero** | ✅ Pedidos + Cobros | ✅ Caja + Pagos + Transfers | ❌ | ❌ | ❌ |
 | **Mozo** | ✅ Solo sus pedidos | ❌ | ❌ | ❌ | ❌ |
 | **Cocina** | Ver pedidos | ❌ | ❌ | ❌ | ❌ |
@@ -294,12 +294,6 @@ php artisan test --filter=OrderTest::test_mozo_cannot_update_other_users_order
 ## Documentación Técnica
 
 La documentación exhaustiva del proyecto se encuentra en la carpeta `/docs/`:
-
-| Documento | Descripción |
-|-----------|-------------|
-| `04_canvas_fuente_de_verdad_proyecto.md` | **Canvas** — Fuente de verdad. Arquitectura, modelo de datos, endpoints, servicios, seguridad y mejoras futuras |
-| `03_documento_tecnico_auditoria_sistema.md` | Auditoría técnica del sistema post-implementación |
-| `02 docs tecnicos/` | Documentación de diseño y planificación inicial |
 
 ---
 
