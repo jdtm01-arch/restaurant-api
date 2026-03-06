@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Sale;
 use App\Models\Expense;
 use App\Models\FinancialAccount;
+use App\Models\FinancialMovement;
 use App\Exceptions\CashRegister\CashRegisterAlreadyExistsException;
 use App\Exceptions\CashRegister\CashRegisterAlreadyClosedException;
 use App\Exceptions\CashRegister\NoCashRegisterOpenException;
@@ -73,6 +74,22 @@ class CashRegisterService
                         "El monto de apertura (S/ {$data['opening_amount']}) no puede ser menor al cierre del día anterior (S/ {$prevClosing})."
                     ],
                 ]);
+            }
+        } elseif ($prevRegister === null && $cashAccount) {
+            // Primera apertura de caja: el monto debe coincidir con el saldo inicial de la cuenta de efectivo
+            $initialBalance = FinancialMovement::where('financial_account_id', $cashAccount->id)
+                ->where('type', FinancialMovement::TYPE_INITIAL_BALANCE)
+                ->value('amount');
+
+            if ($initialBalance !== null) {
+                $initAmount = round((float) $initialBalance, 2);
+                if (round((float) $data['opening_amount'], 2) !== $initAmount) {
+                    throw \Illuminate\Validation\ValidationException::withMessages([
+                        'opening_amount' => [
+                            "La primera apertura de caja debe coincidir con el saldo inicial registrado en la inicialización financiera (S/ {$initAmount})."
+                        ],
+                    ]);
+                }
             }
         }
 

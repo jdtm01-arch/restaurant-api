@@ -257,7 +257,7 @@ class FinancialInitializationTest extends TestCase
 
         // Now cash register should work
         $response = $this->withHeaders($this->adminGeneralHeaders())
-            ->postJson('/api/cash-registers', ['opening_amount' => 100]);
+            ->postJson('/api/cash-registers', ['opening_amount' => 1000.00]);
 
         $response->assertStatus(201);
     }

@@ -193,9 +193,9 @@ class FinancialModuleTest extends TestCase
             ->getJson('/api/financial-accounts/balances');
 
         $response->assertOk()
-            // 10000 (Caja Principal initial_balance) + 1000 (Caja Física income) + 300 (Yape income)
-            ->assertJsonFragment(['total' => 11300.0])
-            ->assertJsonPath('data.by_type.cash', fn ($v) => (float) $v === 11000.0)
+            // 200 (Caja Principal initial_balance) + 1000 (Caja Física income) + 300 (Yape income)
+            ->assertJsonFragment(['total' => 1500.0])
+            ->assertJsonPath('data.by_type.cash', fn ($v) => (float) $v === 1200.0)
             ->assertJsonPath('data.by_type.digital', fn ($v) => (float) $v === 300.0);
     }
 

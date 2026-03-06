@@ -97,7 +97,7 @@ class CashRegisterTest extends TestCase
     public function test_caja_can_open_cash_register(): void
     {
         $this->withHeaders($this->cajaHeaders())
-            ->postJson('/api/cash-registers', ['opening_amount' => 100])
+            ->postJson('/api/cash-registers', ['opening_amount' => 200])
             ->assertStatus(201);
     }
 

@@ -108,7 +108,7 @@ class MultiTenantIsolationTest extends TestCase
                 'restaurant_id'        => $r->id,
                 'user_id'              => $user->id,
                 'type'                 => FinancialMovement::TYPE_INITIAL_BALANCE,
-                'amount'               => 10000.00,
+                'amount'               => 100.00,
                 'reference_type'       => FinancialMovement::REF_INITIAL_BALANCE,
                 'reference_id'         => $cashAccount->id,
                 'description'          => 'Saldo inicial test',

@@ -608,9 +608,9 @@ class FinancialAuditTest extends TestCase
     {
         $crId = $this->openCashRegister(200);
 
-        // Cerrar con monto real de 300
+        // Cerrar con monto real de 200
         $this->withHeaders($this->adminHeaders())
-            ->postJson("/api/cash-registers/{$crId}/close", ['closing_amount_real' => 300]);
+            ->postJson("/api/cash-registers/{$crId}/close", ['closing_amount_real' => 200]);
 
         // Simular siguiente día
         CashRegister::where('id', $crId)->update(['date' => now()->subDay()]);
@@ -620,9 +620,9 @@ class FinancialAuditTest extends TestCase
             ->postJson('/api/cash-registers', ['opening_amount' => 100])
             ->assertStatus(422);
 
-        // Abrir con monto igual o mayor (debería funcionar si hay saldo)
+        // Abrir con monto igual al cierre anterior (debería funcionar si hay saldo)
         $this->withHeaders($this->adminHeaders())
-            ->postJson('/api/cash-registers', ['opening_amount' => 300])
+            ->postJson('/api/cash-registers', ['opening_amount' => 200])
             ->assertStatus(201);
     }
 

@@ -102,7 +102,7 @@ class RolesPermissionsTest extends TestCase
             'type'                 => FinancialMovement::TYPE_INITIAL_BALANCE,
             'reference_type'       => FinancialMovement::REF_INITIAL_BALANCE,
             'reference_id'         => $cashAccount->id,
-            'amount'               => 10000.00,
+            'amount'               => 100.00,
             'description'          => 'Saldo inicial',
             'movement_date'        => now()->toDateString(),
             'created_by'           => $this->users['admin_restaurante']->id,

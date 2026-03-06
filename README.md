@@ -76,11 +76,16 @@ Plataforma SaaS multi-tenant para la gestión operativa y financiera de restaura
 
 ## Instalación
 
-### 1. Clonar el repositorio
+### 1. Crear carpeta raíz y clonar repositorios
 
 ```bash
-git clone <url-del-repositorio> la-conquista
-cd la-conquista
+mkdir restaurant-app && cd restaurant-app
+
+# Backend (API REST)
+git clone https://github.com/jdtm01-arch/restaurant-api.git backend
+
+# Frontend (SPA React)
+git clone https://github.com/jdtm01-arch/restaurant-web.git frontend
 ```
 
 ### 2. Configurar el Backend
@@ -202,7 +207,7 @@ Tras ejecutar `php artisan migrate --seed`, se crea un usuario administrador:
 ## Estructura del Proyecto
 
 ```
-la-conquista/
+restaurant-app/
 ├── backend/                    # API REST — Laravel 12
 │   ├── app/
 │   │   ├── Exceptions/         # 28 excepciones tipadas por dominio

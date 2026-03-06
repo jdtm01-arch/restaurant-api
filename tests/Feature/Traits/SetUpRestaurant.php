@@ -132,14 +132,14 @@ trait SetUpRestaurant
             'is_active'     => true,
         ]);
 
-        // Initial balance so cash register can be opened with typical amounts
+        // Initial balance — must match openCashRegister() default amount (200.00)
         FinancialMovement::create([
             'restaurant_id'        => $this->restaurantId,
             'financial_account_id' => $this->cashFinancialAccount->id,
             'type'                 => FinancialMovement::TYPE_INITIAL_BALANCE,
             'reference_type'       => FinancialMovement::REF_INITIAL_BALANCE,
             'reference_id'         => $this->cashFinancialAccount->id,
-            'amount'               => 10000.00,
+            'amount'               => 200.00,
             'description'          => 'Saldo inicial — Caja Principal',
             'movement_date'        => now()->toDateString(),
             'created_by'           => $this->adminUser->id,
