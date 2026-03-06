@@ -1,59 +1,313 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🍽️ Tu Restaurante — Sistema de Gestión para Restaurantes
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?logo=laravel&logoColor=white)
+![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-06B6D4?logo=tailwindcss&logoColor=white)
+![Sanctum](https://img.shields.io/badge/Sanctum-4.3-FF2D20?logo=laravel&logoColor=white)
+![Tests](https://img.shields.io/badge/Tests-292%20passing-brightgreen)
 
-## About Laravel
+Plataforma SaaS multi-tenant para la gestión operativa y financiera de restaurantes. Cubre el ciclo completo: **pedidos → ventas → gastos → caja → cierre contable diario**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Tabla de Contenidos
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [Características](#-características)
+- [Stack Tecnológico](#-stack-tecnológico)
+- [Requisitos Previos](#-requisitos-previos)
+- [Instalación](#-instalación)
+- [Variables de Entorno](#-variables-de-entorno)
+- [Uso](#-uso)
+- [Estructura del Proyecto](#-estructura-del-proyecto)
+- [Testing](#-testing)
+- [Roles de Usuario](#-roles-de-usuario)
+- [Documentación Técnica](#-documentación-técnica)
+- [Licencia](#-licencia)
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## ✨ Características
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Operaciones
+- **Gestión de pedidos** — Crear, agregar ítems, cerrar, reabrir, cancelar, cambio de mesa
+- **Cobro flexible** — Pagos con múltiples métodos (efectivo, tarjeta, etc.) y cuentas financieras
+- **Pantalla de cocina** — Display en tiempo real de pedidos pendientes
+- **Mapa visual de mesas** — Disposición configurable con drag & drop
 
-## Laravel Sponsors
+### Finanzas
+- **Caja registradora** — Apertura/cierre diario con validación de montos
+- **Cierre contable** — Bloquea la fecha y genera resumen financiero del día
+- **Cuentas financieras** — Múltiples cuentas (efectivo, digital, banco) con saldo dinámico calculado
+- **Transferencias** — Movimientos entre cuentas con trazabilidad completa
+- **Gastos** — CRUD con pagos parciales/totales, adjuntos, auditoría campo-a-campo
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Reportes
+- Ventas por categoría, por hora, por mesero
+- Productos más vendidos
+- Flujo de caja diario
+- Cancelaciones y descuentos
+- Mermas y costo de alimentos
+- Cuentas por pagar et resumen ejecutivo
 
-### Premium Partners
+### Seguridad
+- Autenticación por token Bearer (Sanctum)
+- Cabeceras de seguridad (X-Content-Type-Options, HSTS, X-Frame-Options)
+- Sistema de roles y permisos (5 roles)
+- Aislamiento multi-tenant por restaurante
+- Auditoría inmutable de operaciones financieras
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🔧 Stack Tecnológico
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Capa | Tecnología | Versión |
+|------|-----------|---------|
+| Backend | PHP / Laravel | 8.2 / 12.x |
+| Frontend | React / Vite | 18.3 / 6.0 |
+| Base de datos | MySQL | 8.0 |
+| Autenticación | Laravel Sanctum | 4.3 |
+| Estilos | TailwindCSS | 3.4 |
+| Gráficos | Recharts | 3.7 |
+| Testing | PHPUnit | 11.5 |
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 📦 Requisitos Previos
 
-## Security Vulnerabilities
+- **PHP** >= 8.2 con extensiones: `pdo_mysql`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`
+- **Composer** >= 2.x
+- **Node.js** >= 18.x
+- **npm** >= 9.x
+- **MySQL** >= 8.0
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 🚀 Instalación
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 1. Clonar el repositorio
+
+```bash
+git clone <url-del-repositorio> la-conquista
+cd la-conquista
+```
+
+### 2. Configurar el Backend
+
+```bash
+cd backend
+
+# Instalar dependencias PHP
+composer install
+
+# Copiar archivo de configuración
+cp .env.example .env
+
+# Generar clave de aplicación
+php artisan key:generate
+
+# Configurar variables de entorno (ver sección siguiente)
+nano .env
+
+# Ejecutar migraciones y seeders
+php artisan migrate --seed
+
+# Crear enlace simbólico de storage
+php artisan storage:link
+```
+
+### 3. Configurar el Frontend
+
+```bash
+cd ../frontend
+
+# Instalar dependencias Node
+npm install
+```
+
+### 4. Iniciar los Servidores
+
+```bash
+# Terminal 1: Backend
+cd backend
+php artisan serve
+# → http://localhost:8000
+
+# Terminal 2: Frontend
+cd frontend
+npm run dev
+# → http://localhost:5173
+```
+
+---
+
+## ⚙️ Variables de Entorno
+
+### Backend (`backend/.env`)
+
+```env
+# Aplicación
+APP_NAME="Tu Restaurante"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+
+# Base de Datos
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=restaurante_saas
+DB_USERNAME=root
+DB_PASSWORD=tu_contraseña_segura
+
+# Seguridad
+BCRYPT_ROUNDS=12
+
+# CORS
+CORS_ALLOWED_ORIGINS=http://localhost:5173
+
+# Sanctum
+SANCTUM_STATEFUL_DOMAINS=localhost:5173
+
+# Sesión
+SESSION_LIFETIME=120
+```
+
+### Frontend (`frontend/.env`)
+
+```env
+VITE_API_URL=http://localhost:8000/api
+```
+
+---
+
+## 💻 Uso
+
+### Usuario por Defecto (Seeder)
+
+Tras ejecutar `php artisan migrate --seed`, se crea un usuario administrador:
+
+| Campo | Valor |
+|-------|-------|
+| Email | `admin@turestaurante.com` |
+| Password | `password` |
+| Rol | `admin_general` |
+
+> ⚠️ **Importante**: Cambiar la contraseña en producción.
+
+### Flujo Operativo Típico
+
+1. **Iniciar sesión** con credenciales de admin
+2. **Inicializar el módulo financiero** (primera vez — asignar saldos iniciales a cuentas)
+3. **Abrir caja** para el día (con monto de apertura)
+4. **Crear pedidos** → agregar ítems → cerrar pedidos
+5. **Cobrar pedidos** (genera venta + movimiento financiero)
+6. **Registrar gastos** del día (con pagos parciales/totales)
+7. **Cerrar caja** (comparar monto real vs esperado)
+8. **Cierre contable** (bloquea el día — no más modificaciones)
+
+---
+
+## 📁 Estructura del Proyecto
+
+```
+la-conquista/
+├── backend/                    # API REST — Laravel 12
+│   ├── app/
+│   │   ├── Exceptions/         # 28 excepciones tipadas por dominio
+│   │   ├── Http/
+│   │   │   ├── Controllers/    # 20 controllers
+│   │   │   ├── Middleware/     # 5 middleware custom
+│   │   │   └── Requests/      # 20 Form Requests
+│   │   ├── Models/             # 26 modelos Eloquent
+│   │   ├── Policies/           # 17 policies de autorización
+│   │   └── Services/           # 14 servicios de lógica de negocio
+│   ├── database/
+│   │   ├── migrations/         # 27 migraciones
+│   │   └── seeders/            # 7 seeders (incluye flujo completo)
+│   ├── routes/
+│   │   └── api.php             # ~60 endpoints REST
+│   └── tests/
+│       └── Feature/            # 292 tests / 564 assertions
+│
+├── frontend/                   # SPA — React 18 + Vite
+│   ├── src/
+│   │   ├── api/                # 24 módulos API (Axios)
+│   │   ├── components/         # Reutilizables + UI kit
+│   │   ├── context/            # AuthContext
+│   │   ├── hooks/              # useCrud (CRUD genérico)
+│   │   ├── layouts/            # DashboardLayout
+│   │   └── pages/              # 20+ páginas por módulo
+│   └── vite.config.js
+│
+└── docs/                       # Documentación técnica
+    └── 04_canvas_fuente_de_verdad_proyecto.md
+```
+
+---
+
+## 🧪 Testing
+
+### Ejecutar la Suite Completa
+
+```bash
+cd backend
+php artisan test
+```
+
+### Resultado Esperado
+
+```
+Tests:    292 passed (564 assertions)
+Duration: ~15s
+```
+
+### Ejecutar un Test Específico
+
+```bash
+# Por archivo
+php artisan test --filter=OrderTest
+
+# Por método
+php artisan test --filter=OrderTest::test_mozo_cannot_update_other_users_order
+```
+
+### Tests Destacados
+
+| Archivo | Propósito |
+|---------|-----------|
+| `FinancialAuditTest` | 42 escenarios de reglas financieras |
+| `FullDayFlowTest` | Flujo E2E de un día operativo completo |
+| `MultiTenantIsolationTest` | Aislamiento de datos entre restaurantes |
+| `RolesPermissionsTest` | Matriz completa de permisos por rol |
+
+---
+
+## 👥 Roles de Usuario
+
+| Rol | Operaciones | Finanzas | Administración | Reportes |
+|-----|------------|----------|----------------|----------|
+| **Admin General** | ✅ Todo | ✅ Todo | ✅ Todo | ✅ Todo |
+| **Admin Restaurante** | ✅ Todo | ✅ Todo | ✅ Su restaurante | ✅ Todo |
+| **Cajero** | ✅ Pedidos + Cobros | ✅ Caja + Pagos + Transfers | ❌ | ❌ |
+| **Mozo** | ✅ Solo sus pedidos | ❌ | ❌ | ❌ |
+| **Cocina** | 👁️ Ver pedidos | ❌ | ✅ Mermas | ❌ |
+
+---
+
+## 📖 Documentación Técnica
+
+La documentación exhaustiva del proyecto se encuentra en la carpeta `/docs/`:
+
+| Documento | Descripción |
+|-----------|-------------|
+| `04_canvas_fuente_de_verdad_proyecto.md` | **Canvas** — Fuente de verdad. Arquitectura, modelo de datos, endpoints, servicios, seguridad y mejoras futuras |
+| `03_documento_tecnico_auditoria_sistema.md` | Auditoría técnica del sistema post-implementación |
+| `02 docs tecnicos/` | Documentación de diseño y planificación inicial |
+
+---
+
+## 📝 Licencia
+
+MIT License — ver [LICENSE](LICENSE) para más detalles.
