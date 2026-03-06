@@ -1,4 +1,4 @@
-# Tu Restaurante — Sistema de Gestión para Restaurantes
+# Sistema de Gestión para Restaurantes
 
 Plataforma SaaS multi-tenant para la gestión operativa y financiera de restaurantes. Cubre el ciclo completo: **pedidos → ventas → gastos → caja → cierre contable diario**.
 
