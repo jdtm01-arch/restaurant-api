@@ -812,28 +812,26 @@ Las policies están registradas en `AuthServiceProvider` y se ejecutan via `$thi
 |---|--------|--------------|
 | 1 | **Rate limiting granular por endpoint** | Actualmente solo `throttle:login` y `throttle:reports`. Endpoints de escritura financiera deberían tener rate limiting propio. |
 | 2 | **Logging estructurado con correlación** | Implementar request IDs para rastrear un flujo completo en logs. Actualmente `LOG_CHANNEL=stack` con configuración por defecto. |
-| 3 | **Variables de entorno sensibles** | La contraseña de BD (`DB_PASSWORD=1QAZ2XSW3EDC`) está en `.env` versionado. Mover a vault o secrets manager. El `.env` no debe estar en el repositorio. |
-| 4 | **`.env.example` actualizado** | El `.env.example` tiene `DB_CONNECTION=sqlite` mientras producción usa MySQL. Alinear con la configuración real. |
 
 ### 🟡 Prioridad Media
 
 | # | Mejora | Justificación |
 |---|--------|--------------|
-| 5 | **Validación de saldo en pagos de gastos** | Al registrar un pago de gasto con `financial_account_id`, no se verifica que la cuenta tenga saldo suficiente (a diferencia de transferencias que sí lo validan). |
-| 6 | **API Resources / Transformers** | Los controllers retornan modelos Eloquent directamente. Implementar `JsonResource` / `ResourceCollection` para control explícito de la serialización y evitar exposición accidental de campos. |
-| 7 | **Websockets para cocina** | `KitchenDisplay` usa polling. Migrar a Laravel Echo + Pusher/Reverb para notificaciones en tiempo real. |
-| 8 | **Paginación en endpoints de listado** | Algunos endpoints (`financial-accounts`, `financial-movements`) no implementan paginación, pudiendo resultar en payloads grandes. |
-| 9 | **Auditoría de accesos fallidos** | Registrar intentos de acceso 403 en `audit_logs` para detección de abusos. |
+| 3 | **Validación de saldo en pagos de gastos** | Al registrar un pago de gasto con `financial_account_id`, no se verifica que la cuenta tenga saldo suficiente (a diferencia de transferencias que sí lo validan). |
+| 4 | **API Resources / Transformers** | Los controllers retornan modelos Eloquent directamente. Implementar `JsonResource` / `ResourceCollection` para control explícito de la serialización y evitar exposición accidental de campos. |
+| 5 | **Websockets para cocina** | `KitchenDisplay` usa polling. Migrar a Laravel Echo + Pusher/Reverb para notificaciones en tiempo real. |
+| 6 | **Paginación en endpoints de listado** | Algunos endpoints (`financial-accounts`, `financial-movements`) no implementan paginación, pudiendo resultar en payloads grandes. |
+| 7 | **Auditoría de accesos fallidos** | Registrar intentos de acceso 403 en `audit_logs` para detección de abusos. |
 
 ### 🟢 Prioridad Baja
 
 | # | Mejora | Justificación |
 |---|--------|--------------|
-| 10 | **Containerización con Docker** | Simplificar despliegue y onboarding. Actualmente requiere instalación manual de PHP, MySQL, Node. |
-| 11 | **CI/CD Pipeline** | Automatizar ejecución de `php artisan test` en push/PR. |
-| 12 | **Internacionalización (i18n)** | El sistema está en español hardcoded. Migrar mensajes a archivos de traducción para soporte multiidioma futuro. |
-| 13 | **Soft delete en transferencias** | Actualmente el delete es hard delete. Implementar soft deletes para trazabilidad completa. |
-| 14 | **Export de reportes a Excel/PDF** | Complementar los reportes de API con generación de archivos descargables. |
+| 8 | **Containerización con Docker** | Simplificar despliegue y onboarding. Actualmente requiere instalación manual de PHP, MySQL, Node. |
+| 9 | **CI/CD Pipeline** | Automatizar ejecución de `php artisan test` en push/PR. |
+| 10 | **Internacionalización (i18n)** | El sistema está en español hardcoded. Migrar mensajes a archivos de traducción para soporte multiidioma futuro. |
+| 11 | **Soft delete en transferencias** | Actualmente el delete es hard delete. Implementar soft deletes para trazabilidad completa. |
+| 12 | **Export de reportes a Excel/PDF** | Complementar los reportes de API con generación de archivos descargables. |
 
 ---
 
