@@ -1,18 +1,10 @@
-# 🍽️ Tu Restaurante — Sistema de Gestión para Restaurantes
-
-![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?logo=laravel&logoColor=white)
-![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-06B6D4?logo=tailwindcss&logoColor=white)
-![Sanctum](https://img.shields.io/badge/Sanctum-4.3-FF2D20?logo=laravel&logoColor=white)
-![Tests](https://img.shields.io/badge/Tests-292%20passing-brightgreen)
+# Tu Restaurante — Sistema de Gestión para Restaurantes
 
 Plataforma SaaS multi-tenant para la gestión operativa y financiera de restaurantes. Cubre el ciclo completo: **pedidos → ventas → gastos → caja → cierre contable diario**.
 
 ---
 
-## 📋 Tabla de Contenidos
+## Tabla de Contenidos
 
 - [Características](#-características)
 - [Stack Tecnológico](#-stack-tecnológico)
@@ -28,7 +20,7 @@ Plataforma SaaS multi-tenant para la gestión operativa y financiera de restaura
 
 ---
 
-## ✨ Características
+## Características
 
 ### Operaciones
 - **Gestión de pedidos** — Crear, agregar ítems, cerrar, reabrir, cancelar, cambio de mesa
@@ -60,7 +52,7 @@ Plataforma SaaS multi-tenant para la gestión operativa y financiera de restaura
 
 ---
 
-## 🔧 Stack Tecnológico
+## Stack Tecnológico
 
 | Capa | Tecnología | Versión |
 |------|-----------|---------|
@@ -74,7 +66,7 @@ Plataforma SaaS multi-tenant para la gestión operativa y financiera de restaura
 
 ---
 
-## 📦 Requisitos Previos
+## Requisitos Previos
 
 - **PHP** >= 8.2 con extensiones: `pdo_mysql`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`
 - **Composer** >= 2.x
@@ -84,7 +76,7 @@ Plataforma SaaS multi-tenant para la gestión operativa y financiera de restaura
 
 ---
 
-## 🚀 Instalación
+## Instalación
 
 ### 1. Clonar el repositorio
 
@@ -142,7 +134,7 @@ npm run dev
 
 ---
 
-## ⚙️ Variables de Entorno
+## Variables de Entorno
 
 ### Backend (`backend/.env`)
 
@@ -182,7 +174,7 @@ VITE_API_URL=http://localhost:8000/api
 
 ---
 
-## 💻 Uso
+## Uso
 
 ### Usuario por Defecto (Seeder)
 
@@ -209,7 +201,7 @@ Tras ejecutar `php artisan migrate --seed`, se crea un usuario administrador:
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 la-conquista/
@@ -247,7 +239,7 @@ la-conquista/
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Ejecutar la Suite Completa
 
@@ -284,7 +276,7 @@ php artisan test --filter=OrderTest::test_mozo_cannot_update_other_users_order
 
 ---
 
-## 👥 Roles de Usuario
+## Roles de Usuario
 
 | Rol | Operaciones | Finanzas | Administración | Reportes |
 |-----|------------|----------|----------------|----------|
@@ -296,7 +288,7 @@ php artisan test --filter=OrderTest::test_mozo_cannot_update_other_users_order
 
 ---
 
-## 📖 Documentación Técnica
+## Documentación Técnica
 
 La documentación exhaustiva del proyecto se encuentra en la carpeta `/docs/`:
 
@@ -308,6 +300,6 @@ La documentación exhaustiva del proyecto se encuentra en la carpeta `/docs/`:
 
 ---
 
-## 📝 Licencia
+## Licencia
 
 MIT License — ver [LICENSE](LICENSE) para más detalles.
