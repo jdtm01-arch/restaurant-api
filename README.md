@@ -25,7 +25,6 @@ Plataforma SaaS multi-tenant para la gestión operativa y financiera de restaura
 ### Operaciones
 - **Gestión de pedidos** — Crear, agregar ítems, cerrar, reabrir, cancelar, cambio de mesa
 - **Cobro flexible** — Pagos con múltiples métodos (efectivo, tarjeta, etc.) y cuentas financieras
-- **Pantalla de cocina** — Display en tiempo real de pedidos pendientes
 - **Mapa visual de mesas** — Disposición configurable con drag & drop
 
 ### Finanzas
@@ -40,7 +39,6 @@ Plataforma SaaS multi-tenant para la gestión operativa y financiera de restaura
 - Productos más vendidos
 - Flujo de caja diario
 - Cancelaciones y descuentos
-- Mermas y costo de alimentos
 - Cuentas por pagar et resumen ejecutivo
 
 ### Seguridad
@@ -284,7 +282,7 @@ php artisan test --filter=OrderTest::test_mozo_cannot_update_other_users_order
 | **Admin Restaurante** | ✅ Todo | ✅ Todo | ✅ Su restaurante | ✅ Todo |
 | **Cajero** | ✅ Pedidos + Cobros | ✅ Caja + Pagos + Transfers | ❌ | ❌ |
 | **Mozo** | ✅ Solo sus pedidos | ❌ | ❌ | ❌ |
-| **Cocina** | 👁️ Ver pedidos | ❌ | ✅ Mermas | ❌ |
+| **Cocina** | Ver pedidos | ❌ | ❌ | ❌ |
 
 ---
 
