@@ -276,13 +276,13 @@ php artisan test --filter=OrderTest::test_mozo_cannot_update_other_users_order
 
 ## Roles de Usuario
 
-| Rol | Operaciones | Finanzas | Administración | Reportes |
-|-----|------------|----------|----------------|----------|
-| **Admin General** | ✅ Todo | ✅ Todo | ✅ Todo | ✅ Todo |
-| **Admin Restaurante** | ✅ Todo | ✅ Todo | ✅ Su restaurante | ✅ Todo |
-| **Cajero** | ✅ Pedidos + Cobros | ✅ Caja + Pagos + Transfers | ❌ | ❌ |
-| **Mozo** | ✅ Solo sus pedidos | ❌ | ❌ | ❌ |
-| **Cocina** | Ver pedidos | ❌ | ❌ | ❌ |
+| Rol | Operaciones | Finanzas | Administración | Auditoría | Reportes |
+|-----|------------|----------|----------------|----------|----------|
+| **Admin General** | ✅ Todo | ✅ Todo | ✅ Todo | ✅ Todo | ✅ Todo |
+| **Admin Restaurante** | ✅ Todo | ✅ Todo | ✅ Su restaurante | ❌ | ✅ Todo |
+| **Cajero** | ✅ Pedidos + Cobros | ✅ Caja + Pagos + Transfers | ❌ | ❌ | ❌ |
+| **Mozo** | ✅ Solo sus pedidos | ❌ | ❌ | ❌ | ❌ |
+| **Cocina** | Ver pedidos | ❌ | ❌ | ❌ | ❌ |
 
 ---
 
