@@ -19,6 +19,14 @@ https://demo-restaurant-smoky.vercel.app
 API:
 https://web-production-d9ec5.up.railway.app
 
+## Demo Access
+
+You can test the platform using the following credentials:
+
+| Role | Email | Password |
+|-----|------|------|
+| Admin | super-admin@turestaurante.com | admin1234 |
+
 ---
 
 ## Tabla de Contenidos
