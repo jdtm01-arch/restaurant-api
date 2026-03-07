@@ -11,7 +11,7 @@ return [
 
     'allowed_origins' => explode(',', env(
         'CORS_ALLOWED_ORIGINS',
-        'https://demo-restaurant-smoky.vercel.app/login,http://localhost:5173,http://127.0.0.1:5173,http://localhost,http://127.0.0.1'
+        'https://demo-restaurant-smoky.vercel.app,http://localhost:5173,http://127.0.0.1:5173,http://localhost,http://127.0.0.1'
     )),
 
     'allowed_origins_patterns' => [],
