@@ -258,6 +258,19 @@ class FinancialModuleTest extends TestCase
     {
         $this->openCashRegister();
 
+        // Seed sufficient balance so the new balance validation passes
+        FinancialMovement::create([
+            'restaurant_id'        => $this->restaurantId,
+            'financial_account_id' => $this->cashAccount->id,
+            'type'                 => FinancialMovement::TYPE_INITIAL_BALANCE,
+            'reference_type'       => FinancialMovement::REF_INITIAL_BALANCE,
+            'reference_id'         => $this->cashAccount->id,
+            'amount'               => 200.00,
+            'description'          => 'Saldo inicial test',
+            'movement_date'        => now()->toDateString(),
+            'created_by'           => $this->adminUser->id,
+        ]);
+
         // Crear gasto
         $expenseRes = $this->withHeaders($this->adminHeaders())
             ->postJson('/api/expenses', [

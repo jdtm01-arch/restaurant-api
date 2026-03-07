@@ -30,7 +30,7 @@
 | **Producto** | Plataforma SaaS multi-tenant para la gestión operativa y financiera de restaurantes |
 | **Dominio** | Pedidos → Ventas → Gastos → Caja → Cierre contable diario |
 | **Audiencia** | Administradores, cajeros, mozos y personal de cocina |
-| **Estado** | Producción con 292 tests / 564 assertions — suite verde |
+| **Estado** | Producción con 294 tests / 569 assertions — suite verde |
 
 ### Stack Tecnológico
 
@@ -817,7 +817,7 @@ Las policies están registradas en `AuthServiceProvider` y se ejecutan via `$thi
 
 | # | Mejora | Justificación |
 |---|--------|--------------|
-| 3 | **Validación de saldo en pagos de gastos** | Al registrar un pago de gasto con `financial_account_id`, no se verifica que la cuenta tenga saldo suficiente (a diferencia de transferencias que sí lo validan). |
+| 3 | ~~**Validación de saldo en pagos de gastos**~~ ✅ | Implementado: `ExpensePaymentService` verifica saldo suficiente en la cuenta financiera antes de registrar el pago (igual que transferencias). |
 | 4 | **API Resources / Transformers** | Los controllers retornan modelos Eloquent directamente. Implementar `JsonResource` / `ResourceCollection` para control explícito de la serialización y evitar exposición accidental de campos. |
 | 5 | **Websockets para cocina** | `KitchenDisplay` usa polling. Migrar a Laravel Echo + Pusher/Reverb para notificaciones en tiempo real. |
 | 6 | **Paginación en endpoints de listado** | Algunos endpoints (`financial-accounts`, `financial-movements`) no implementan paginación, pudiendo resultar en payloads grandes. |

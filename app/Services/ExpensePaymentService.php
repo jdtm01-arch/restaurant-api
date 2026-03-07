@@ -88,6 +88,20 @@ class ExpensePaymentService
                 throw new PaymentExceedsAmountException();
             }
 
+            // 6b. Validar saldo suficiente en la cuenta financiera
+            if (! empty($data['financial_account_id'])) {
+                $balance = FinancialAccountService::getAccountBalance(
+                    $data['financial_account_id'],
+                    $expense->restaurant_id
+                );
+
+                if ((float) $data['amount'] > $balance) {
+                    throw ValidationException::withMessages([
+                        'amount' => ['Saldo insuficiente en la cuenta seleccionada. Disponible: S/ ' . number_format($balance, 2)],
+                    ]);
+                }
+            }
+
             // 7. Registrar pago
             $payment = ExpensePayment::create([
                 'expense_id'           => $expense->id,

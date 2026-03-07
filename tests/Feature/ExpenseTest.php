@@ -365,4 +365,67 @@ class ExpenseTest extends TestCase
         $response->assertStatus(422);
         $this->assertArrayHasKey('expense_date', $response->json('errors'));
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Validación: saldo insuficiente en la cuenta financiera
+    |--------------------------------------------------------------------------
+    */
+
+    public function test_payment_fails_when_financial_account_has_insufficient_balance(): void
+    {
+        // El saldo inicial de cashFinancialAccount es S/ 200.00
+        // Crear gasto por S/ 500 (supera el saldo disponible)
+        $createResponse = $this->withHeaders($this->adminHeaders())
+            ->postJson('/api/expenses', [
+                'expense_category_id' => $this->expenseCategory->id,
+                'expense_status_id'   => $this->pendingStatus->id,
+                'amount'              => 500.00,
+                'description'         => 'Gasto con monto mayor al saldo',
+                'expense_date'        => now()->toDateString(),
+            ]);
+
+        $createResponse->assertStatus(201);
+        $expenseId = $createResponse->json('id');
+
+        // Intentar pagar S/ 300 cuando solo hay S/ 200 disponibles
+        $response = $this->withHeaders($this->adminHeaders())
+            ->postJson("/api/expenses/{$expenseId}/payments", [
+                'payment_method_id'    => 1,
+                'financial_account_id' => $this->cashFinancialAccount->id,
+                'amount'               => 300.00,
+                'paid_at'              => now()->toDateString(),
+            ]);
+
+        $response->assertStatus(422);
+        $this->assertArrayHasKey('amount', $response->json('errors'));
+    }
+
+    public function test_payment_succeeds_when_financial_account_has_sufficient_balance(): void
+    {
+        // El saldo inicial de cashFinancialAccount es S/ 200.00
+        // Crear gasto por S/ 50 (dentro del saldo disponible)
+        $createResponse = $this->withHeaders($this->adminHeaders())
+            ->postJson('/api/expenses', [
+                'expense_category_id' => $this->expenseCategory->id,
+                'expense_status_id'   => $this->pendingStatus->id,
+                'amount'              => 50.00,
+                'description'         => 'Gasto dentro del saldo',
+                'expense_date'        => now()->toDateString(),
+            ]);
+
+        $createResponse->assertStatus(201);
+        $expenseId = $createResponse->json('id');
+
+        // Pagar S/ 50 (hay S/ 200 disponibles)
+        $response = $this->withHeaders($this->adminHeaders())
+            ->postJson("/api/expenses/{$expenseId}/payments", [
+                'payment_method_id'    => 1,
+                'financial_account_id' => $this->cashFinancialAccount->id,
+                'amount'               => 50.00,
+                'paid_at'              => now()->toDateString(),
+            ]);
+
+        $response->assertStatus(201);
+    }
 }
